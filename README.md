@@ -16,10 +16,10 @@ IDE Mod switching (NORMAL, INSERT, VISUAL, COMMAND)
 
 # TODO
 
-[ ] Implement GAP Buffer data structure
-[ ] Implement file saving
-[ ] Implement Undo & Redo
-[ ] Implement multiple file buffer
+- [ ] Implement GAP Buffer data structure
+- [ ] Implement file saving
+- [ ] Implement Undo & Redo
+- [ ] Implement multiple file buffer
 
 *The rest need to be defined* (but project file explorer, create/rename/delete file, format file and other features may be implemented in the future).
 
