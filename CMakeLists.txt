@@ -8,4 +8,6 @@ target_sources(
     koda
     PRIVATE
         src/main.cpp
+        src/editor_fsm.cpp
 )
+
