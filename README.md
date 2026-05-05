@@ -9,6 +9,7 @@ This project is a simple terminal based IDE inspired by Vim.
 - Make
 - VCPKG (if needed later)
 - Doctest or Google tests as testing framework
+- Finite state machine to handle all states
 
 # Current progress
 
@@ -16,7 +17,7 @@ IDE Mod switching (NORMAL, INSERT, VISUAL, COMMAND)
 
 # TODO
 
-- [ ] Implement GAP Buffer data structure
+- [ ] Implement GAP Buffer data structure - In Progress
 - [ ] Implement file saving
 - [ ] Implement Undo & Redo
 - [ ] Implement multiple file buffer

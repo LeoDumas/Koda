@@ -9,5 +9,6 @@ target_sources(
     PRIVATE
         src/main.cpp
         src/editor_fsm.cpp
+        src/gap_buffer.cpp
 )
 
