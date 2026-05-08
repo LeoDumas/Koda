@@ -12,3 +12,17 @@ target_sources(
         src/gap_buffer.cpp
 )
 
+# Tests -------------------------
+find_package(GTest REQUIRED)
+enable_testing()
+
+add_executable(koda_tests
+    tests/gap_buffer_test.cpp
+    src/gap_buffer.cpp
+)
+
+target_include_directories(koda_tests PRIVATE src)
+target_link_libraries(koda_tests PRIVATE GTest::gtest_main)
+
+include(GoogleTest)
+gtest_discover_tests(koda_tests)

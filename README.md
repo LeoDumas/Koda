@@ -17,7 +17,7 @@ IDE Mod switching (NORMAL, INSERT, VISUAL, COMMAND)
 
 # TODO
 
-- [ ] Implement GAP Buffer data structure - In Progress
+- [x] Implement GAP Buffer data structure
 - [ ] Implement file saving
 - [ ] Implement Undo & Redo
 - [ ] Implement multiple file buffer
