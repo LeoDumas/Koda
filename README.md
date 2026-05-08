@@ -7,8 +7,8 @@ This project is a simple terminal based IDE inspired by Vim.
 - C++
 - CMake
 - Make
-- VCPKG (if needed later)
-- Doctest or Google tests as testing framework
+- VCPKG
+- Google tests as testing framework
 - Finite state machine to handle all states
 
 # Current progress
