@@ -7,10 +7,10 @@ class GapBuffer{
 
 private: 
   std::vector<char> buffer_;
-  std::size_t gap_start_; // gap start index
+  std::size_t gap_start_; // gap start index & the cursor position
   std::size_t gap_end_; // gap end index
 
-
+  void grow_gap();
 
 public:
   GapBuffer(std::size_t initial_gap_size = 4096)
