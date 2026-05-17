@@ -18,7 +18,9 @@ enable_testing()
 
 add_executable(koda_tests
     tests/gap_buffer_test.cpp
+    tests/editor_fsm_test.cpp
     src/gap_buffer.cpp
+    src/editor_fsm.cpp
 )
 
 target_include_directories(koda_tests PRIVATE src)
