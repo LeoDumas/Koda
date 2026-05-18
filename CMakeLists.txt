@@ -2,6 +2,10 @@ cmake_minimum_required(VERSION 3.20)
 
 project(koda)
 
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 add_executable(koda)
 
 target_sources(
@@ -11,6 +15,7 @@ target_sources(
         src/editor_fsm.cpp
         src/gap_buffer.cpp
 )
+target_include_directories(koda PRIVATE src)
 
 # Tests -------------------------
 find_package(GTest REQUIRED)

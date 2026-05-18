@@ -23,13 +23,39 @@ void enableRawMode() {
 }
 
 void refreshScreen(GapBuffer& buffer, const std::string& message) {
-  // Test render, clear screen and show buffer
-  std::cout << "\x1b[2J\x1b[H"; // Clear screen and move cursor to top left
-  std::cout << "--- KODA (ESC for Normal, i for Insert, :q to Quit) ---\r\n";
-  std::cout << "Buffer: " << buffer.get_data() << "\r\n";
+  Cursor cur = buffer.get_cursor_2d();
+  std::string data = buffer.get_data();
+
+  // Clear screen and move cursor to top left
+  // \x1b[2J = clear screen, \x1b[H = move to 1,1
+  std::cout << "\x1b[2J\x1b[H"; 
+  
+  // Draw Header
+  std::cout << "\x1b[7m--- KODA (Arrows/hjkl to move, i for Insert, :q to Quit) ---\x1b[m\r\n";
+  
+  // Draw Buffer Content
+  std::string current_line;
+  for (char c : data) {
+    if (c == '\n') {
+      std::cout << current_line << "\r\n";
+      current_line.clear();
+    } else {
+      current_line += c;
+    }
+  }
+  std::cout << current_line << "\r\n";
+
+  // Draw Status Line
+  std::cout << "\r\n\x1b[32mCursor: Row " << cur.row << ", Col " << cur.col << "\x1b[0m\r\n";
   if (!message.empty()) {
     std::cout << "\x1b[33m" << message << "\x1b[0m\r\n";
   }
+
+  // Position the physical blinking cursor
+  int terminal_row = cur.row + 2;
+  int terminal_col = cur.col + 1;
+  std::cout << "\x1b[" << terminal_row << ";" << terminal_col << "H";
+
   std::cout.flush();
 }
 
@@ -65,7 +91,18 @@ int main() {
       else if constexpr (std::is_same_v<T, DeleteCharacter>) {
         buffer.delete_at_cursor();
       }
-      // TODO: Add more handlers (MoveCursorLeft, etc.)
+      else if constexpr (std::is_same_v<T, MoveCursorLeft>) {
+        buffer.move_left();
+      }
+      else if constexpr (std::is_same_v<T, MoveCursorRight>) {
+        buffer.move_right();
+      }
+      else if constexpr (std::is_same_v<T, MoveCursorUp>) {
+        buffer.move_up();
+      }
+      else if constexpr (std::is_same_v<T, MoveCursorDown>) {
+        buffer.move_down();
+      }
     }, action);
 
     if (is_running) {

@@ -15,10 +15,12 @@ struct DoNothing {};
 struct InsertChar { char c; };
 struct MoveCursorLeft {};
 struct MoveCursorRight {};
+struct MoveCursorUp {};
+struct MoveCursorDown {};
 struct DeleteCharacter {};
 
 using EditorAction = std::variant<PrintMessage, QuitEditor, DoNothing, InsertChar, 
-      MoveCursorLeft, MoveCursorRight, DeleteCharacter>;
+      MoveCursorLeft, MoveCursorRight, MoveCursorUp, MoveCursorDown, DeleteCharacter>;
 
 // Return new State and new action to perform based on the current one
 std::pair<EditorMode, EditorAction> process_keypress(EditorMode current_mode, char key);
